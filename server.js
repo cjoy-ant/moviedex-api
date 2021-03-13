@@ -30,23 +30,18 @@ function handleGetMovie(req, res) {
   const { genre, country, avg_vote } = req.query;
   let response = MOVIES;
 
-  // search whether genre includes a specified string
-  // case insensitive
   if (genre) {
     response = response.filter((movie) =>
       movie.genre.toLowerCase().includes(genre.toLowerCase())
     );
   }
 
-  // search whether country includes a specified string
-  // case insensitive
   if (country) {
     response = response.filter((movie) =>
       movie.country.toLowerCase().includes(country.toLowerCase())
     );
   }
 
-  // search for moves with avg_vote >= supplied number
   if (avg_vote) {
     response = response.filter(
       (movie) => Number(movie.avg_vote) >= Number(avg_vote)
